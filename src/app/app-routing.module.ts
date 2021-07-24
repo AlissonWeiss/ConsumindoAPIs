@@ -4,12 +4,16 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'folder/Inbox',
+    redirectTo: 'pages/Inicio',
     pathMatch: 'full'
   },
   {
-    path: 'folder/:id',
+    path: 'pages/:id',
     loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
+  },
+  {
+    path: 'via-cep',
+    loadChildren: () => import('./pages/via-cep/via-cep.module').then( m => m.ViaCepPageModule)
   }
 ];
 
