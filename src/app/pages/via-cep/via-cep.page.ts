@@ -79,7 +79,7 @@ export class ViaCepPage implements OnInit {
   trataRetorno(retorno){
     const cep = new CEP();
 
-    if (retorno.erro){
+    if ((retorno !== undefined || retorno != null || retorno !== '') && retorno.erro){
       cep.erro = 'Ops. Parece que este CEP não existe!';
     }
 
@@ -110,12 +110,11 @@ export class ViaCepPage implements OnInit {
       return;
     }
 
-    this.apiService.readCEP(cep).subscribe(result => {
+    this.apiService.readCEP(cep).then(result => {
       console.log(result);
       this.data = this.trataRetorno(result);
     });
   }
-
 }
 
 class CEP {
