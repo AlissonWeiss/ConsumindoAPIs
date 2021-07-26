@@ -14,7 +14,11 @@ const routes: Routes = [
   {
     path: 'via-cep',
     loadChildren: () => import('./pages/via-cep/via-cep.module').then( m => m.ViaCepPageModule)
+  },  {
+    path: 'consulta-nome-ibge',
+    loadChildren: () => import('./pages/consulta-nome-ibge/consulta-nome-ibge.module').then( m => m.ConsultaNomeIBGEPageModule)
   }
+
 ];
 
 @NgModule({

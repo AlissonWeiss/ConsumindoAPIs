@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   public appPages = [
     { title: 'ViaCEP', url: 'via-cep', icon: 'navigate' },
+    { title: 'Consulta nomes', url: 'consulta-nome-ibge', icon: 'people' },
   ];
   constructor() {}
 }

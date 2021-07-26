@@ -11,7 +11,7 @@ export class ApiService {
 
   dataReceived;
 
-  async requestByUrl(url){
+  private async requestByUrl(url){
     await Http.request(
       {
         method: 'GET',
@@ -29,14 +29,20 @@ export class ApiService {
 
   async readNomeEstadoByUF(uf){
     const url = this.servicoDadosIBGE(uf);
-    return this.requestByUrl(url);
+    return await this.requestByUrl(url);
   }
 
   async readCEP(cep){
     const url = this.viaCepURL(cep);
-    return this.requestByUrl(url);
+    return await this.requestByUrl(url);
+  }
+
+  async readCensoNome(nome){
+    const url = this.servicoNomesIBGE(nome);
+    return await this.requestByUrl(url);
   }
 
   private viaCepURL = (cep) => `https://viacep.com.br/ws/${cep}/json`;
   private servicoDadosIBGE = (uf) => `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${uf}`;
+  private servicoNomesIBGE = (nome) => `https://servicodados.ibge.gov.br/api/v2/censos/nomes/${nome}`;
 }
